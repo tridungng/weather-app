@@ -40,8 +40,10 @@ body {
 }
 
 .degree-section span {
-  margin: 10px;
-  font-size: 30px;
+  font-size: 25px;
+  margin-bottom: 6px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .degree-section h2 {

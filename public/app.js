@@ -6,6 +6,7 @@ window.addEventListener("load", function () {
 
   const tempDescription = document.querySelector("div.temperature-description");
   const tempDegree = document.querySelector("h2.temperature-degree");
+  const degreeSymbol = document.querySelector(".degree-section span");
   const locTimezone = document.querySelector(".location-timezone");
   const userLoc = document.querySelector(".user-location");
 
@@ -28,6 +29,10 @@ window.addEventListener("load", function () {
             "C",
             result.main.temp
           ).toFixed(1);
+
+          const degreeSpan = createElementWithTextContent("span", "\u00B0C");
+          tempDegree.after(degreeSpan);
+
           tempDescription.textContent = result.weather[0].description;
           locTimezone.textContent = timeZoneCalc(result.timezone);
           userLoc.textContent = `${result.name}, ${result.sys.country} `;
@@ -42,6 +47,13 @@ window.addEventListener("load", function () {
     alert("We need your geo-position to personalize your experience!");
   }
 });
+
+function createElementWithTextContent(tag, textContent) {
+  const element = document.createElement(`${tag}`);
+  element.textContent = textContent;
+
+  return element;
+}
 
 function convertTemperature(currentScale, targetScale, degree) {
   if (currentScale === "K" && targetScale === "C") {
